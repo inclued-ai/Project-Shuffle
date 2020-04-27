@@ -1,171 +1,20 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-    <!-- <script>
-    function changeDropdown() {
-      // belief is a way of storing the value of the belief dropdown WHATEVER option the user has chosen
-      // var belief = document.getElementById("myList belief").value
-      var gender = document.getElementById("myList gender").value
-      var ability = document.getElementById("myList ability").value
-      var sexuality = document.getElementById("myList sexuality").value
-      var age = document.getElementById("myList age").value
-      // then we're taking the value of belief (which is the value of the belief dropdown) and setting the html for the <p> element to the dropdown value
-      // document.getElementById("belief").innerHTML = belief
-      document.getElementById("gender").innerHTML = gender
-      document.getElementById("ability").innerHTML = ability
-      document.getElementById("sexuality").innerHTML = sexuality
-      document.getElementById("age").innerHTML = age
-    }
-  
-    </script> -->
- 
-
-
+<title>Intersectional Persona</title>
+<link rel="stylesheet" href="style.css">
+    
+</head>
 <body>
-    
-    
-    <h2>Persona Intersection</h2>
-    
-    <div class="row">
-      <div class="column">
-          <h2>Must Have</h2>
-          <p>What are the top things all of your customer must have in common?</p>
-          <div>
-              <p>If your persona have multiple of an option pick the most common. 
+        <div class="container">
+  
+                <h1 class= "head">Generate a Intersectional Persona</h1>
+                  <p class="lead"> Does your content include...</p> 
+                <div id="random-name"></div>
 
-          </div>  
-               <div>
-                          <div><form>    <label>Belief -  </label>
-                              <select id = "myList belief">
-                                  <option value = " "> </option>
-                                <option value = "Hindu">Hindu</option>
-                                <option value = "Muslim">Muslim</option>
-                                <option value = "Christian">Christian</option>
-                                <option value = "Buddhist">Buddhist</option>
-                              </select>
-                           </p></div>
-                           <div> <form>    <label>Gender - </label>
-                              <select id = "myList gender">
-                                  <option value = " "> </option>
-                                <option value = "Female">Female</option>
-                                <option value = "Male">Male</option>
-                                <option value = "Non-binary">Non-binary</option>
-                              </select>
-                           </p></div>
-                           <div> <form>    <label>Ability - </label>
-                               <select id = "myList ability">
-                                  <option value = " "> </option>
-                                 <option value = "Touch">Touch</option>
-                                 <option value = "Sight">Sight</option>
-                                 <option value = "Hearing">Hearing</option>
-                                 <option value = "Speach">Speach</option>
-                                 <option value = "Unseen Disability">Unseen Disability</option>
-                                 <option value = "Fully Able">Fully Able</option>
-                               </select>
-                            </p></div>
-                            <div>  <form>    <label>Sexuality -</label>
-                              <select id = "myList sexuality">
-                                  <option value = " "> </option>
-                                <option value = "Heterosexual">Heterosexual</option>
-                                <option value = "Bisexual">Bisexual</option>
-                                <option value = "Queer">queer</option>
-                              </select>
-                           </p></div>
-                           <div>  <form>    <label>Age - </label>
-                               <select id = "myList age">
-                                  <option value = " "> </option>
-                                 <option value = "Child">Child (0-15)</option>
-                                 <option value = "Young-Adult">Young Adult (16- 24)</option>
-                                 <option value = "Adult">Adult (25- 65)</option>
-                                 <option value = "Elder">Old (65 +)</option>
-                               </select>
-                            </p></div>
-                   </div>
-                                        <button onclick="randomBeliefSelector()" id="mix-button" type="button">Mix!</button>
-
-</div>
-<div class="column2">
-         
-  <div>
-  </div>
-   <h1>Variable</h1>
-          <p>Does your content resonate with...</p>
-          <p>  </p>
-          <p>  </p>
-         <div>
-             </div>
-              <div> 
-                  <div>
-             <p>Someone who belives in </p> 
-
-             <form>
-                     <fieldset>
-                        <p id="belief"> 
-                            <script> 
-                                var beliefOptions =["Hindu", "Muslim", "Christian", "Buddhist"]
-                                
-                                function randomBeliefSelector() {
-                                  var randomNumber = Math.floor(Math.random() * (beliefOptions.length - 0 + 1) + 0);
-                                  var selectBeliefOptions = beliefOptions[randomNumber];
-                                  return selectBeliefOptions;
-                                        document.getElementById("belief").innerHTML = beliefOptions
-
-                                }
-                                
-                                    </script>
-                        </p>
-                     </fieldset>
-             </div>
-          <div>
-             <p>is of ________ gender</p>  
-             <form>
-                     <fieldset>
-                        <p id="gender">
-                        </p>
-                     </fieldset>
-             </div>   
-         <div>
-             <p>may have a lost of ________ </p>
-             <form>
-                     <fieldset>
-                        <p id="ability"> 
-                        </p>
-                     </fieldset> <space>  </space>
-             </div>
-         <div>
-          <p>is from a _________ group</p> 
-            <form>
-                 <fieldset>
-                    <p id="sexuality">
-                    </p>
-                 </fieldset>
-             </div>    
-         <div>
-          <p>and may be of a ________ age group?</p>  
-             <form>
-                     <fieldset>
-                        <p id="age">
-                        </p>
-                     </fieldset>
-              </p></div>
-            </div>
-                                 <!-- <button onclick="randomBeliefSelector()" id="random-button" type="button">Random!</button> -->
-         </div>
-
-</div>
-    
-    </body>
-    </html>
-    
-        
-       
-    </form>
-  </body>
-</html>
+                <button class="btn" id="generate">Generate Another</button>
+                  
+                </div>      
+<script src="script.js"></script>     
 </body>
 </html>
+
