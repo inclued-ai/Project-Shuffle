@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 900px; 
+  background-color:rgb(204, 149, 149); 
+}
+.column2 {
+    flex: 50%;
+    background-color:rgb(171, 202, 185)}
+.mix-button {color: aqua;}
