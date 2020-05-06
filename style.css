@@ -5,8 +5,8 @@
     font-family: Open Sans; font-size: 40px;
   }
 #generate {
-  color: #000;
-  background: #3D94F6; 
+  color: rgb(255, 255, 255);
+  background: #4f9ca5; 
   font-family: Open Sans; font-size: 40px;
   padding-right:50px;
   padding-left: 50px;
@@ -22,10 +22,14 @@
 }
 .head {font-family: Open Sans; font-size: 40px;
 }
-.container {width: 100%;
+.container {
   text-align: center;
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+  }
 
-}
 
 .body {    font-family: Open Sans,sans-serif;
   font-size: 1rem;
