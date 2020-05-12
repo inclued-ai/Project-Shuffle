@@ -25,7 +25,7 @@ const setRandomName = () => {
   document.getElementById('random-name').innerText = getRandomName();
 }
 
-document.getElementById('SHUFFLE')
+document.getElementById('generate')
   .addEventListener('click', setRandomName);
 
 setRandomName();
