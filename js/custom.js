@@ -1,32 +1,33 @@
-const firstNames = ["Hindu", "Muslim", "Christian", "Buddhist"];
+const religions = ["Hindu", "Muslim", "Christian", "Buddhist", "Sikh", "Jewish"];
 
-const secondNames = ["Female", "Male", "Non-binary", "Female"];
+const genders = ["Female", "Male", "Non-binary"];
 
-const secondAbility = ["Touch", "Sight", "Hearing", "Speech"];
+const abilities = ["Touch", "Sight", "Hearing", "Speech"];
 
-const secondSexuality = ["Heterosexual", "Bisexual", "Queer"];
+const sexualities = ["Heterosexual", "Bisexual", "Queer"];
 
-const secondAge = [ "16- 24", "25-65", "65+"];
+const ages = [ "between 16-24", "between 25-44", "between 45-64", "65+"];
 
-const skintone = ["#f9cfae", "#dea674", "#804e31", "b87139"];
+const skintone = ["#f9cfae", "#dea674", "#804e31", "#b87139"];
 
 
-const getRandomNumber = (max) => Math.floor(Math.random() * max);
+const getRandomIndex = (max) => Math.floor(Math.random() * max);
 
-const getRandomName = () => 
-  `someone of ${firstNames[getRandomNumber(firstNames.length)]} faith,
-   is of a  ${secondNames[getRandomNumber(secondNames.length)]} gender, 
-   may have a lost of ${secondAbility[getRandomNumber(secondAbility.length)]}, 
-   is from a ${secondSexuality[getRandomNumber(secondSexuality.length)]} 
-   group and of a ${secondAge[getRandomNumber(secondAge.length)]} generation
-   of a ${skintone[getRandomNumber(skintone.length)]} skintone`;
+function getRandomPersona() {
+    var selectedSkinTone = skintone[getRandomIndex(skintone.length)];
+    return `someone of the ${religions[getRandomIndex(religions.length)]} faith, <br />
+   is ${genders[getRandomIndex(genders.length)]}, <br />
+   may have a loss of ${abilities[getRandomIndex(abilities.length)]}, <br />
+   is ${sexualities[getRandomIndex(sexualities.length)]} <br />
+   and is ${ages[getRandomIndex(ages.length)]} years old <br />
+   with this <div style="display:inline;background:${selectedSkinTone};color: ${selectedSkinTone};">${selectedSkinTone}</div> skintone.`;
+}
 
-const setRandomName = () => {
-  document.getElementById('random-name').innerText = getRandomName();
+const setRandomPersona = () => {
+  document.getElementById('random-name').innerHTML = getRandomPersona();
 }
 
 document.getElementById('generate')
-  .addEventListener('click', setRandomName);
+  .addEventListener('click', setRandomPersona);
 
-setRandomName();
-
+setRandomPersona();
