@@ -1,3 +1,6 @@
+var counter = 0;
+const maxCycles = 3;
+
 const religions = ["Hindu", "Muslim", "Christian", "Buddhist", "Sikh", "Jewish"];
 
 const genders = ["Female", "Male", "Non-binary"];
@@ -23,11 +26,33 @@ function getRandomPersona() {
    with this <div style="display:inline;background:${selectedSkinTone};color: ${selectedSkinTone};">${selectedSkinTone}</div> skintone.`;
 }
 
+function recordResult(e) {
+    // TODO #5: Record results
+    console.log(document.getElementById('random-name').innerText);
+    console.log(e.srcElement.value);
+    counter += 1;
+    if (counter >= maxCycles) {
+        window.location.href = "thank-you.html";
+    }
+}
+
 const setRandomPersona = () => {
   document.getElementById('random-name').innerHTML = getRandomPersona();
 }
 
-document.getElementById('generate')
+
+document.getElementById('yes')
+  .addEventListener('click', recordResult);
+
+document.getElementById('yes')
   .addEventListener('click', setRandomPersona);
+
+
+document.getElementById('no')
+  .addEventListener('click', recordResult);
+
+document.getElementById('no')
+  .addEventListener('click', setRandomPersona);
+
 
 setRandomPersona();
