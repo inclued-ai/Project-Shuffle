@@ -23,7 +23,7 @@ function getRandomPersona() {
    may have a loss of ${abilities[getRandomIndex(abilities.length)]}, <br />
    is ${sexualities[getRandomIndex(sexualities.length)]} <br />
    and is ${ages[getRandomIndex(ages.length)]} years old <br />
-   with this <div style="display:inline;background:${selectedSkinTone};color: ${selectedSkinTone};">${selectedSkinTone}</div> skintone.`;
+   with this <div style="display:inline;background:${selectedSkinTone};color: ${selectedSkinTone};">${selectedSkinTone}</div> skintone?`;
 }
 
 function recordResult(e) {
