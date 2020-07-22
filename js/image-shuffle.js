@@ -1,3 +1,5 @@
+var results = [];
+
 var counter = 0;
 const maxCycles = 3;
 
@@ -14,12 +16,13 @@ function getRandomFace() {
     }
 }
 
-function recordResult(e) {
-    // TODO #5: Record results
-    console.log(document.getElementById('face').src);
-    console.log(e.srcElement.value);
+function logResult(e) {
+    results.push(document.getElementById('face').src);
+    results.push(e.srcElement.value);
+    results.push(getDateTimeForStorage());
     counter += 1;
     if (counter >= maxCycles) {
+        recordResult(results);
         window.location.href = "page2.html";
     }
 }
@@ -28,19 +31,18 @@ const setRandomFace = () => {
   document.getElementById('face').setAttribute("src", getRandomFace());
 }
 
-
 document.getElementById('yes')
-  .addEventListener('click', recordResult);
+  .addEventListener('click', logResult);
 
 document.getElementById('yes')
   .addEventListener('click', setRandomFace);
 
-
 document.getElementById('no')
-  .addEventListener('click', recordResult);
+  .addEventListener('click', logResult);
 
 document.getElementById('no')
   .addEventListener('click', setRandomFace);
-
 
 setRandomFace();
+
+results.push(getDateTimeForStorage());
