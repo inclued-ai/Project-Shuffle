@@ -1,6 +1,4 @@
 // Common functions
-const getRandomIndex = (max) => Math.floor(Math.random() * max) + 1;
-
 function getDateTimeForStorage() {
   return new Date().toUTCString().slice(0, -4);
 }
@@ -11,11 +9,13 @@ const maxImageCycles = 3;
 const categoryA = 18;
 const categoryB = 17;
 
+const getRandomImageNumber = (max) => Math.floor(Math.random() * max) + 1;
+
 function getRandomFace() {
   if (imageCounter != 1) {
-    return `img/category-a/image-${getRandomIndex(categoryA)}.jpg`;
+    return `img/category-a/image-${getRandomImageNumber(categoryA)}.jpg`;
   } else {
-    return `img/category-b/image-${getRandomIndex(categoryB)}.jpg`;
+    return `img/category-b/image-${getRandomImageNumber(categoryB)}.jpg`;
   }
 }
 
@@ -71,6 +71,8 @@ const abilities = ["Touch", "Sight", "Hearing", "Speech"];
 const sexualities = ["Heterosexual", "Bisexual", "Queer"];
 const ages = [ "between 16-24", "between 25-44", "between 45-64", "65+"];
 const skintone = ["#f9cfae", "#dea674", "#804e31", "#b87139"];
+
+const getRandomIndex = (max) => Math.floor(Math.random() * max);
 
 function getRandomPersona() {
   var selectedSkinTone = skintone[getRandomIndex(skintone.length)];
