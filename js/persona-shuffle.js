@@ -1,6 +1,16 @@
+// Using Google Analytics to track interactions
+// NB: The first 20 event hits sent to Analytics are processed immediately, 
+// thereafter processing is rate-limited to two event hits per second. 
+// A maximum of 500 hits per session are processed. This limit applies to all hits except ecommerce item or transaction hits.
+// So wise to keep (maxImageCycles + maxPersonaCycles) x 3 below 20
+
 // Common functions
-function getDateTimeForStorage() {
-  return new Date().toUTCString().slice(0, -4);
+var previousTime = Date.now();
+function getElaspedTime() {
+  var currentTime = Date.now();
+  var elaspedTime = Date.now() - previousTime;
+  previousTime = currentTime;
+  return elaspedTime;
 }
 
 // Image Shuffle functionality
@@ -20,10 +30,27 @@ function getRandomFace() {
 }
 
 function logImageShuffleResult(e) {
-  // gtag('event', 'login', {'method': 'Google'});
-  console.log(document.getElementById('face').src);
-  console.log(e.srcElement.value);
-  console.log(getDateTimeForStorage());
+  var response_time = getElaspedTime();
+  var image_src = document.getElementById('face').src;
+  var action = e.srcElement.value + "_response";
+
+  // console.log("logImageShuffleResult");
+  // console.log(image_src);
+  // console.log(action);
+  // console.log(response_time);
+
+  gtag('event', action, {
+    'event_category': 'Photos',
+    'event_label': image_src,
+    'value': 1
+  });
+
+  gtag('event', 'response_time', {
+    'event_category': 'Photos',
+    'event_label': image_src,
+    'value': response_time
+  });
+
   imageCounter += 1;
   if (imageCounter >= maxImageCycles) {
       hideImageShuffle();
@@ -32,7 +59,14 @@ function logImageShuffleResult(e) {
 }
 
 const setRandomFace = () => {
-  document.getElementById('face').setAttribute('src', getRandomFace());
+  var random_face = getRandomFace();
+  document.getElementById('face').setAttribute('src', random_face);
+  gtag('event', 'view', {
+    'event_category': 'Photos',
+    'event_label': random_face,
+    'value': 1,
+    'non_interaction': true
+  });
 }
 
 function showImageShuffle(){
@@ -43,8 +77,6 @@ function showImageShuffle(){
   document.getElementById('no').addEventListener('click', setRandomFace);
 
   setRandomFace();
-
-  console.log(getDateTimeForStorage());
 }
 
 function hideImageShuffle(){
@@ -85,31 +117,27 @@ function getRandomPersona() {
 }
 
 function logPersonaShuffleResult(e) {
-  // gtag('event', 'login', {'method': 'Google'});
-  // Consider label view_item
-  // gtag('event', 'persona-shuffle', {
-  //   'event_category': 'engagement',
-  //   'event_label': <label>,
-  //   'value': <value>
-  // });
-  // Feature detects Navigation Timing API support.  
-  // TODO Confirm fit for purpose as seems to be averaged
-  // if (window.performance) {
-  //   // Gets the number of milliseconds since page load
-  //   // (and rounds the result since the value must be an integer).
-  //   var timeSincePageLoad = Math.round(performance.now());
+  var response_time = getElaspedTime();
+  var persona_text = document.getElementById('random-name').innerText.replace(/(?:\r\n|\r|\n)/g, " ");
+  var action = e.srcElement.value + "_response";
 
-  //   // Sends the timing event to Google Analytics.
-  //   gtag('event', 'timing_complete', {
-  //     'name': 'load',
-  //     'value': timeSincePageLoad,
-  //     'event_category': 'JS Dependencies'
-  //   });
-  // }
-  // https://developers.google.com/analytics/devguides/collection/gtagjs/user-timings
-  console.log(document.getElementById('random-name').innerText.replace(/(?:\r\n|\r|\n)/g, " "));
-  console.log(e.srcElement.value);
-  console.log(getDateTimeForStorage());
+  // console.log("logPersonaShuffleResult");
+  // console.log(persona_text);
+  // console.log(action);
+  // console.log(response_time);
+
+  gtag('event', action, {
+    'event_category': 'Personas',
+    'event_label': persona_text,
+    'value': 1
+  });
+
+  gtag('event', 'response_time', {
+    'event_category': 'Personas',
+    'event_label': persona_text,
+    'value': response_time
+  });
+
   personaCounter += 1;
   if (personaCounter >= maxImageCycles) {
       hidePersonaShuffle();
@@ -118,14 +146,14 @@ function logPersonaShuffleResult(e) {
 }
 
 const setRandomPersona = () => {
-  document.getElementById('random-name').innerHTML = getRandomPersona();
-  // TODO: Record when shuffle changed loaded and shuffle is visible. - maybe an onload event on image if exists
-  // TODO: Record random text
-  // gtag('event', 'persona-shuffle', {
-  //   'event_category': 'engagement',
-  //   'event_label': 'view_item',
-  //   'value': <value>
-  // });
+  var persona_text = getRandomPersona();
+  document.getElementById('random-name').innerHTML = persona_text;
+  gtag('event', 'view', {
+    'event_category': 'Personas',
+    'event_label': persona_text,
+    'value': 1,
+    'non_interaction': true
+  });
 }
 
 function showPersonaShuffle(){
@@ -143,18 +171,6 @@ function showPersonaShuffle(){
 
   // Show a random persona description
   setRandomPersona();
-
-  // TODO: Record when page loaded and shuffle is visible.
-  // gtag('event', 'video_auto_play_start', {
-  //   'event_label': 'My promotional video',
-  //   'event_category': 'video_auto_play',
-  //   'non_interaction': true
-  // });
-  // gtag('event', 'timing_complete', {<timing_parameters>});
-  // ref: https://developers.google.com/analytics/devguides/collection/gtagjs/user-timings
-  console.log(getDateTimeForStorage());
-
-  // TODO Up to - https://developers.google.com/analytics/devguides/collection/gtagjs/custom-dims-mets
 }
 
 function hidePersonaShuffle(){
