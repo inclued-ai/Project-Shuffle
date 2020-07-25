@@ -42,13 +42,13 @@ function logImageShuffleResult(e) {
   gtag('event', action, {
     'event_category': 'Photos',
     'event_label': image_src,
-    'value': 1
+    action: 1
   });
 
   gtag('event', 'response_time', {
     'event_category': 'Photos',
     'event_label': image_src,
-    'value': response_time
+    'response_time': response_time
   });
 
   imageCounter += 1;
@@ -64,7 +64,7 @@ const setRandomFace = () => {
   gtag('event', 'view', {
     'event_category': 'Photos',
     'event_label': random_face,
-    'value': 1,
+    'view': 1,
     'non_interaction': true
   });
 }
@@ -129,7 +129,7 @@ function logPersonaShuffleResult(e) {
   gtag('event', action, {
     'event_category': 'Personas',
     'event_label': persona_text,
-    'value': 1
+    action: 1
   });
 
   gtag('event', 'response_time', {
@@ -151,7 +151,7 @@ const setRandomPersona = () => {
   gtag('event', 'view', {
     'event_category': 'Personas',
     'event_label': persona_text,
-    'value': 1,
+    'view': 1,
     'non_interaction': true
   });
 }
