@@ -59,7 +59,7 @@ const setRandomFace = () => {
   document.getElementById('face').setAttribute('src', random_face);
   gtag('event', 'view', {
     'event_category': 'Photos',
-    'event_label': random_face,
+    'event_label': document.getElementById('face').src,
     'view': 1,
     'non_interaction': true
   });
