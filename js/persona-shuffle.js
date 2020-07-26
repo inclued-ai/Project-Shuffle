@@ -36,14 +36,14 @@ function logImageShuffleResult(e) {
   data = {'event_category': 'Photos',
           'event_label': image_src,
           'value': 1}
-  data[response] = 1;
+  // data[response] = 1;
   gtag('event', response, data);
 
   response = e.srcElement.value + "_response_time";
   data = {'event_category': 'Photos',
           'event_label': image_src,
           'value': response_time}
-  data[response] = response_time
+  // data[response] = response_time
   gtag('event', response, data);
 
   imageCounter += 1;
@@ -122,14 +122,14 @@ function logPersonaShuffleResult(e) {
   data = {'event_category': 'Personas',
           'event_label': persona_text,
           'value': 1};
-  data[response] = 1;
+  // data[response] = 1;
   gtag('event', response, data);
 
   response = e.srcElement.value + "_response_time";
   data = {'event_category': 'Personas',
           'event_label': persona_text,
           'value': response_time};
-  data[response] = response_time;
+  // data[response] = response_time;
   gtag('event', response, data);
 
   personaCounter += 1;
