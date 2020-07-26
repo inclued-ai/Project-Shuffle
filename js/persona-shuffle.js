@@ -31,21 +31,18 @@ function getRandomFace() {
 
 function logImageShuffleResult(e) {
   var response_time = getElaspedTime();
-
   var image_src = document.getElementById('face').src;
-  var action = e.srcElement.value + "_response";
-  gtag('event', action, {
-    'event_category': 'Photos',
-    'event_label': image_src,
-    action: 1
-  });
+  var response = e.srcElement.value + "_response";
+  data = {'event_category': 'Photos',
+          'event_label': image_src}
+  data[response] = 1;
+  gtag('event', response, data);
 
-  action = e.srcElement.value + "_response_time";
-  gtag('event', action, {
-    'event_category': 'Photos',
-    'event_label': image_src,
-    action: response_time
-  });
+  response = e.srcElement.value + "_response_time";
+  data = {'event_category': 'Photos',
+          'event_label': image_src}
+  data[response] = response_time
+  gtag('event', response, data);
 
   imageCounter += 1;
   if (imageCounter >= maxImageCycles) {
@@ -118,21 +115,18 @@ function getRandomPersonaText() {
 
 function logPersonaShuffleResult(e) {
   var response_time = getElaspedTime();
-
   var persona_text = getRandomPersonaText();
-  var action = e.srcElement.value + "_response";
-  gtag('event', action, {
-    'event_category': 'Personas',
-    'event_label': persona_text,
-    action: 1
-  });
+  var response = e.srcElement.value + "_response";
+  data = {'event_category': 'Personas',
+          'event_label': persona_text};
+  data[response] = 1;
+  gtag('event', response, data);
 
-  action = e.srcElement.value + "_response_time";
-  gtag('event', action, {
-    'event_category': 'Personas',
-    'event_label': persona_text,
-    action: response_time
-  });
+  response = e.srcElement.value + "_response_time";
+  data = {'event_category': 'Personas',
+          'event_label': persona_text};
+  data[response] = response_time;
+  gtag('event', response, data);
 
   personaCounter += 1;
   if (personaCounter >= maxImageCycles) {
