@@ -116,9 +116,13 @@ function getRandomPersona() {
     with this <div style="display:inline;background:${selectedSkinTone};color: ${selectedSkinTone};">${selectedSkinTone}</div> skintone.`;
 }
 
+function getRandomPersonaText() {
+  return document.getElementById('random-name').innerText.replace(/(?:\r\n|\r|\n)/g, " ");
+}
+
 function logPersonaShuffleResult(e) {
   var response_time = getElaspedTime();
-  var persona_text = document.getElementById('random-name').innerText.replace(/(?:\r\n|\r|\n)/g, " ");
+  var persona_text = getRandomPersonaText();
   var action = e.srcElement.value + "_response";
 
   // console.log("logPersonaShuffleResult");
@@ -146,11 +150,10 @@ function logPersonaShuffleResult(e) {
 }
 
 const setRandomPersona = () => {
-  var persona_text = getRandomPersona();
-  document.getElementById('random-name').innerHTML = persona_text;
+  document.getElementById('random-name').innerHTML = getRandomPersona();
   gtag('event', 'view', {
     'event_category': 'Personas',
-    'event_label': persona_text,
+    'event_label': getRandomPersonaText(),
     'view': 1,
     'non_interaction': true
   });
