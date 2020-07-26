@@ -34,13 +34,15 @@ function logImageShuffleResult(e) {
   var image_src = document.getElementById('face').src;
   var response = e.srcElement.value + "_response";
   data = {'event_category': 'Photos',
-          'event_label': image_src}
+          'event_label': image_src,
+          'value': 1}
   data[response] = 1;
   gtag('event', response, data);
 
   response = e.srcElement.value + "_response_time";
   data = {'event_category': 'Photos',
-          'event_label': image_src}
+          'event_label': image_src,
+          'value': response_time}
   data[response] = response_time
   gtag('event', response, data);
 
@@ -118,13 +120,15 @@ function logPersonaShuffleResult(e) {
   var persona_text = getRandomPersonaText();
   var response = e.srcElement.value + "_response";
   data = {'event_category': 'Personas',
-          'event_label': persona_text};
+          'event_label': persona_text,
+          'value': 1};
   data[response] = 1;
   gtag('event', response, data);
 
   response = e.srcElement.value + "_response_time";
   data = {'event_category': 'Personas',
-          'event_label': persona_text};
+          'event_label': persona_text,
+          'value': response_time};
   data[response] = response_time;
   gtag('event', response, data);
 
