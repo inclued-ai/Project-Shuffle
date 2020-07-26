@@ -31,24 +31,20 @@ function getRandomFace() {
 
 function logImageShuffleResult(e) {
   var response_time = getElaspedTime();
+
   var image_src = document.getElementById('face').src;
   var action = e.srcElement.value + "_response";
-
-  // console.log("logImageShuffleResult");
-  // console.log(image_src);
-  // console.log(action);
-  // console.log(response_time);
-
   gtag('event', action, {
     'event_category': 'Photos',
     'event_label': image_src,
     action: 1
   });
 
-  gtag('event', 'response_time', {
+  action = e.srcElement.value + "_response_time";
+  gtag('event', action, {
     'event_category': 'Photos',
     'event_label': image_src,
-    'response_time': response_time
+    action: response_time
   });
 
   imageCounter += 1;
@@ -122,24 +118,20 @@ function getRandomPersonaText() {
 
 function logPersonaShuffleResult(e) {
   var response_time = getElaspedTime();
+
   var persona_text = getRandomPersonaText();
   var action = e.srcElement.value + "_response";
-
-  // console.log("logPersonaShuffleResult");
-  // console.log(persona_text);
-  // console.log(action);
-  // console.log(response_time);
-
   gtag('event', action, {
     'event_category': 'Personas',
     'event_label': persona_text,
     action: 1
   });
 
-  gtag('event', 'response_time', {
+  action = e.srcElement.value + "_response_time";
+  gtag('event', action, {
     'event_category': 'Personas',
     'event_label': persona_text,
-    'value': response_time
+    action: response_time
   });
 
   personaCounter += 1;
