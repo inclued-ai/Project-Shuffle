@@ -17,15 +17,15 @@ function getElaspedTime() {
 var imageCounter = 0;
 const maxImageCycles = 3;
 const categoryA = 18;
-const categoryB = 17;
+const categoryB = 18;
 
 const getRandomImageNumber = (max) => Math.floor(Math.random() * max) + 1;
 
 function getRandomFace() {
   if (imageCounter != 1) {
-    return `img/category-A/img-${getRandomImageNumber(categoryA)}.jpg`;
+    return `img/category-A/img-A${getRandomImageNumber(categoryA)}.jpg`;
   } else {
-    return `img/category-B/img-${getRandomImageNumber(categoryB)}.jpg`;
+    return `img/category-B/img-B${getRandomImageNumber(categoryB)}.jpg`;
   }
 }
 
