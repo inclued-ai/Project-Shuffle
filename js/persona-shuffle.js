@@ -23,9 +23,9 @@ const getRandomImageNumber = (max) => Math.floor(Math.random() * max) + 1;
 
 function getRandomFace() {
   if (imageCounter != 1) {
-    return `img/category-a/image-${getRandomImageNumber(categoryA)}.jpg`;
+    return `img/category-A/img-${getRandomImageNumber(categoryA)}.jpg`;
   } else {
-    return `img/category-b/image-${getRandomImageNumber(categoryB)}.jpg`;
+    return `img/category-B/img-${getRandomImageNumber(categoryB)}.jpg`;
   }
 }
 
